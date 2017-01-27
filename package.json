@@ -1,6 +1,6 @@
 {
   "name": "sarathi-consul-strategy",
-  "version": "0.0.1-alpha.1",
+  "version": "0.0.1",
   "description": "Implementation of Sarathi's discovery API for Consul.io Edit",
   "main": "./lib",
   "scripts": {
@@ -33,6 +33,6 @@
     "consul": "~0.27.0",
     "lodash": "~4.17.4",
     "promise": "~7.1.1",
-    "sarathi-discovery-strategy": "0.0.1-alpha.1"
+    "sarathi-discovery-strategy": "0.0.1"
   }
 }
