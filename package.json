@@ -1,0 +1,38 @@
+{
+  "name": "sarathi-consul-strategy",
+  "version": "0.0.1-alpha.1",
+  "description": "Implementation of Sarathi's discovery API for Consul.io Edit",
+  "main": "./lib",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nikhilw/sarathi-consul-strategy.git"
+  },
+  "keywords": [
+    "microservice",
+    "feign",
+    "sarathi",
+    "consul",
+    "service discovery"
+  ],
+  "author": "nikhilw",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nikhilw/sarathi-consul-strategy/issues"
+  },
+  "homepage": "https://github.com/nikhilw/sarathi-consul-strategy#readme",
+  "devDependencies": {
+    "chai": "~3.5.0",
+    "gulp": "~3.9.1",
+    "gulp-mocha": "~3.0.1",
+    "mocha": "~3.2.0"
+  },
+  "dependencies": {
+    "consul": "~0.27.0",
+    "lodash": "~4.17.4",
+    "promise": "~7.1.1",
+    "sarathi-discovery-strategy": "0.0.1-alpha.1"
+  }
+}
