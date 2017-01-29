@@ -16,7 +16,9 @@ module.exports = {
     jquery: true
   },
   globals: {
-    _: false,
+	_: false,
+	describe: true,
+	it: true
   },
   "rules": {
     "accessor-pairs": 2,
@@ -143,4 +145,4 @@ module.exports = {
     "yield-star-spacing": [2, "both"],
     "yoda": [2, "never"]
   }
-}
+};

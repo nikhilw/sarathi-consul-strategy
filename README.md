@@ -18,54 +18,60 @@ sarathiClientBuilder.setDiscoveryStrategy(ds);
 ## Options
 * serviceId: ```String``` name of the service to discover, Ex: "testservice"
 * client: ```Object``` instance of discovery service client, if you already have one; you might have used it for registering your service.
-* clientConfig: ```Object``` Configuration to be passed to discovery service client, if you want sarathi to instantiate it
+* clientConfig: ```Object``` Configuration to be passed to discovery service client, if you want sarathi to instantiate it. Client instance, if passed, takes precedence over this.
 * refreshRate: ```Number``` in ms. timeout, to refresh discovered services. Ex: 30000 to mean every 30s.
 * zone: ```String``` **not** yet supported, but for data-center awareness.
+* discoveryTimeout: ```Number``` in ms. Timeout, time to wait for before the call to the discovery server times out.
 
 ## Examples
-### Local consul
+### When consul server is running locally
 ```javascript
 var ds = new ConsulDiscoveryStrategy({serviceId: "express-service"});
 ```
 
-### consul client already instantiated
+### When consul client already instantiated
 ```javascript
 var ds = new ConsulDiscoveryStrategy({serviceId: "express-service", client: consulClientInstance});
 ```
 
-##
+
 ## API
 A fluent API for setting configuration
 
-#### DiscoveryBuilder()
+### DiscoveryBuilder()
 Object returned by ```require("sarathi-consul-strategy").StrategyBuilder```
 
-##### DiscoveryBuilder# setClient(discoveryClient)
-set instance of the discovery server client. This shall come handy when you have already instantiated the client instance for registering with the server.
+#### DiscoveryBuilder# setClient(discoveryClient)
+Set instance of the discovery server client. This shall come handy when you have already instantiated the client instance for registering with the server.
 
-##### DiscoveryBuilder# setClientConfig(clientConfig)
-pass the config for sarathi to instantiate the client
+#### DiscoveryBuilder# setClientConfig(clientConfig)
+Pass the config for sarathi to instantiate the client. If setClient and setClientConfig both are used, client instance passed will be used and the configuration provided to this method will be discarded. You can un-set the client instance by setting it to undefined.
 
-##### DiscoveryBuilder# setRefreshRate(refreshRate)
-set service catalg refresh timeout
+#### DiscoveryBuilder# setRefreshRate(refreshRate)
+Set service catalg refresh timeout
 
-##### DiscoveryBuilder# setServiceId(serviceId)
-set the service name to look for on the discovery server
+#### DiscoveryBuilder# setServiceId(serviceId)
+Set the service name to look for on the discovery server
 
-##### DiscoveryBuilder# setZone(zone)
+#### DiscoveryBuilder# setZone(zone)
 **NOT** Implemented; but this is where you can set the data center preference
 
-##### DiscoveryBuilder# build()
-builds the discovery handler instance and returns the instance of DiscoveryStrategy.
+#### DiscoveryBuilder# build()
+Builds the discovery handler instance and returns the instance of DiscoveryStrategy.
 
+### ConsulDiscoveryStrategy
+Sarathi consul discovery strategy
+
+#### ConsulDiscoveryStrategy# getConsulInstance()
+Returns the instance of consul client, if you needed to use it.
 
 ## Configuration Defaults
 ```javascript
 {
-	serviceId: "test-service",
+	serviceId: undefined,
 	client: undefined,
 	clientConfig: {},
 	refreshRate: 30000,
-	zone: undefined,
-};
+	zone: undefined
+}
 ```
