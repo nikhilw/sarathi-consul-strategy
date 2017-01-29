@@ -44,6 +44,11 @@ describe("ConsulStrategyBuilder", function () {
 		returnVal.should.be.an.instanceOf(StrategyBuilder);
 	});
 
+	it("setDiscoveryTimeout should return builder back, for chainability", function () {
+		var returnVal = strategyBuilder.setDiscoveryTimeout(500);
+		returnVal.should.be.an.instanceOf(StrategyBuilder);
+	});
+
 	it("build should return instance of strategy", function () {
 		var returnVal = strategyBuilder.build();
 		returnVal.should.be.an.instanceOf(Strategy);

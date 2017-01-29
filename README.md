@@ -1,6 +1,8 @@
 # sarathi-consul-strategy
 Implementation of Sarathi's discovery API for Consul.io
 
+[![Build Status](https://travis-ci.org/nikhilw/sarathi-consul-strategy.svg?branch=master)](https://travis-ci.org/nikhilw/sarathi-consul-strategy) [![Coverage Status](https://coveralls.io/repos/github/nikhilw/sarathi-consul-strategy/badge.svg?branch=master)](https://coveralls.io/github/nikhilw/sarathi-consul-strategy?branch=master)
+
 ## Installation
 ```npm
 npm install sarathi-consul-strategy --save
@@ -41,28 +43,31 @@ A fluent API for setting configuration
 ### DiscoveryBuilder()
 Object returned by ```require("sarathi-consul-strategy").StrategyBuilder```
 
-#### DiscoveryBuilder# setClient(discoveryClient)
+#### #setClient(discoveryClient)
 Set instance of the discovery server client. This shall come handy when you have already instantiated the client instance for registering with the server.
 
-#### DiscoveryBuilder# setClientConfig(clientConfig)
+#### #setClientConfig(clientConfig)
 Pass the config for sarathi to instantiate the client. If setClient and setClientConfig both are used, client instance passed will be used and the configuration provided to this method will be discarded. You can un-set the client instance by setting it to undefined.
 
-#### DiscoveryBuilder# setRefreshRate(refreshRate)
+#### #setRefreshRate(refreshRate)
 Set service catalg refresh timeout
 
-#### DiscoveryBuilder# setServiceId(serviceId)
+#### #setServiceId(serviceId)
 Set the service name to look for on the discovery server
 
-#### DiscoveryBuilder# setZone(zone)
+#### #setZone(zone)
 **NOT** Implemented; but this is where you can set the data center preference
 
-#### DiscoveryBuilder# build()
+#### #setDiscoveryTimeout(timeout)
+Sets the timeout period for throwing exception for when discovery server is taking too long to respond.
+
+#### #build()
 Builds the discovery handler instance and returns the instance of DiscoveryStrategy.
 
 ### ConsulDiscoveryStrategy
 Sarathi consul discovery strategy
 
-#### ConsulDiscoveryStrategy# getConsulInstance()
+#### #getConsulInstance()
 Returns the instance of consul client, if you needed to use it.
 
 ## Configuration Defaults
@@ -72,6 +77,7 @@ Returns the instance of consul client, if you needed to use it.
 	client: undefined,
 	clientConfig: {},
 	refreshRate: 30000,
-	zone: undefined
+	zone: undefined,
+	discoveryTimeout: 30000
 }
 ```
