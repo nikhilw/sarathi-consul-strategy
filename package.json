@@ -1,6 +1,6 @@
 {
   "name": "sarathi-consul-strategy",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Implementation of Sarathi's discovery API for Consul.io Edit",
   "main": "./lib",
   "scripts": {
