@@ -31,7 +31,8 @@
     "gulp-istanbul": "~1.1.1",
     "gulp-mocha": "~3.0.1",
     "mocha": "~3.2.0",
-    "proxyquire": "~1.7.11"
+    "proxyquire": "~1.7.11",
+    "sinon": "~1.17.7"
   },
   "dependencies": {
     "consul": "~0.27.0",

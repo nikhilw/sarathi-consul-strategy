@@ -2,6 +2,7 @@ var chai = require("chai");
 chai.should();
 var SarathiDiscoveryStrategy = require("sarathi-discovery-strategy");
 var proxyquire = require("proxyquire");
+var sinon = require("sinon");
 
 function DummyConsul() {
 	return this;
@@ -124,4 +125,28 @@ describe("DiscoveryStrategy", function() {
 			}
 		})());
 	});
+
+	it("should continue to trigger discovery reload on given timeout", function () {
+		var clock = sinon.useFakeTimers();
+		var localDiscoveryStrategy = new DiscoveryStrategy({serviceId: "test-one", client: consulClient});
+		var spy = sinon.spy(localDiscoveryStrategy, "discoverInstances");
+
+		spy.calledOnce.should.be.false;
+		localDiscoveryStrategy.discoverInstances();
+		spy.calledOnce.should.be.true;
+
+		clock.tick(29999);
+		spy.calledOnce.should.be.true;
+
+		clock.tick(1);
+		spy.calledTwice.should.be.true;
+
+		clock.tick(29999);
+		spy.calledTwice.should.be.true;
+
+		clock.tick(1);
+		spy.calledThrice.should.be.true;
+
+		clock.restore();
+	})
 });
