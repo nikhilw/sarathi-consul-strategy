@@ -5,7 +5,9 @@
   "main": "./lib",
   "scripts": {
     "test": "gulp test",
-    "coverage": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+    "coverage": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -38,6 +40,8 @@
     "consul": "~0.27.0",
     "lodash": "~4.17.4",
     "promise": "~7.1.1",
-    "sarathi-discovery-strategy": "0.0.1"
-  }
+    "sarathi-discovery-strategy": "0.0.1",
+    "snyk": "^1.192.3"
+  },
+  "snyk": true
 }
